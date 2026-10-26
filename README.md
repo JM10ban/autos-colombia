@@ -1,38 +1,51 @@
-# Autos Colombia – EA1
+# 🚗 Autos Colombia
 
-Prototipo académico web para gestionar usuarios, vehículos, entradas, salidas y celdas en un parqueadero por mensualidad.
+Sistema web para la gestión de un parqueadero por mensualidad, desarrollado como proyecto académico de Tecnología en Desarrollo de Software de la IU Digital de Antioquia.
 
-## Requisitos
-- Python 3.10 o superior
-- Conexión a internet para instalar Flask la primera vez
+## ⚙️ Funcionalidades
 
-## Ejecutar en Windows
-1. Instala Python desde https://www.python.org/downloads/ y marca la opción **Add Python to PATH**.
-2. Descomprime el ZIP.
-3. Abre la carpeta del proyecto en Visual Studio Code.
-4. Abre Terminal > New Terminal y ejecuta:
+- Registro y consulta de usuarios.
+- Registro y gestión de vehículos.
+- Administración de celdas.
+- Control de entradas y salidas.
+- Registro de novedades.
+- Gestión de pagos e historial.
 
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+## 🛠️ Tecnologías
+
+- Python
+- Flask
+- SQLite
+- HTML5 y CSS3
+
+## 🚀 Instalación y ejecución
+
+1. Clonar el repositorio:
+
+```bash
+git clone https://github.com/JM10ban/autos-colombia.git
+```
+
+2. Ingresar a la carpeta e instalar Flask:
+
+```bash
+cd autos-colombia
+pip install Flask
+```
+
+3. Ejecutar la aplicación:
+
+```bash
 python app.py
 ```
 
-Si PowerShell bloquea la activación, prueba:
-```powershell
-.venv\Scripts\python.exe -m pip install -r requirements.txt
-.venv\Scripts\python.exe app.py
-```
+4. Abrir en el navegador: `http://127.0.0.1:5000`
 
-5. Abre http://127.0.0.1:5000 en el navegador.
+## 👨‍💻 Autor
 
-## Flujo para probar
-1. En Usuarios, registra un usuario.
-2. En Vehículos, registra una placa asociada a ese usuario.
-3. En Registrar entrada, introduce la placa; el sistema asigna una celda libre.
-4. En Inicio, pulsa Registrar salida para cerrar la estancia y liberar la celda.
-5. Revisa Celdas e Historial.
+**Juan Martín Estrella Muñoz**  
+Tecnología en Desarrollo de Software — IU Digital de Antioquia
 
-## Alcance
-Este prototipo implementa la gestión básica de usuarios, vehículos, entradas, salidas, ocupación e historial. Las tablas de novedades y pagos están creadas, pero sus pantallas aún deben implementarse para completar el alcance total. La autenticación y los controles de seguridad de producción tampoco están implementados. No usar con datos reales ni desplegar públicamente sin reforzar seguridad, pruebas y configuración.
+## 🔗 Repositorio
+
+[GitHub: Autos Colombia](https://github.com/JM10ban/autos-colombia)

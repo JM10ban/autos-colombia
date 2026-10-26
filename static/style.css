@@ -1,0 +1,502 @@
+
+/* ========================================
+   1. CONFIGURACIÓN GENERAL
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f3f6fb;
+    color: #172b45;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+/* ========================================
+   2. ENCABEZADO Y NAVEGACIÓN
+======================================== */
+
+header {
+    background: #12385b;
+    color: white;
+    box-shadow: 0 3px 14px #0a24401c;
+}
+
+.head-inner {
+    max-width: 1180px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.brand {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.brand small {
+    display: block;
+    margin-top: 4px;
+    color: #c4d7e9;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    padding: 10px 12px;
+    border-radius: 7px;
+    color: #e8f2fc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+nav a:hover {
+    background: #ffffff20;
+}
+
+/* ========================================
+   3. CONTENIDO Y TÍTULOS
+======================================== */
+
+main {
+    max-width: 1180px;
+    min-height: 68vh;
+    margin: 34px auto;
+    padding: 0 20px;
+}
+
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: #287bb4;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+h1 {
+    margin: 0 0 8px;
+    color: #12385b;
+    font-size: 29px;
+}
+
+h2 {
+    margin: 0 0 18px;
+    color: #183b5e;
+    font-size: 18px;
+}
+
+.welcome p:not(.eyebrow) {
+    margin: 0;
+    color: #62758b;
+}
+
+/* ========================================
+   4. BOTONES
+======================================== */
+
+.btn {
+    display: inline-block;
+    padding: 12px 17px;
+    border: 0;
+    border-radius: 8px;
+    background: #1877b9;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn:hover {
+    background: #0e5f99;
+}
+
+.btn-small {
+    padding: 8px 11px;
+    font-size: 12px;
+}
+
+.btn-outline {
+    border: 1px solid #b9cddd;
+    background: white;
+    color: #176ca5;
+}
+
+/* ========================================
+   5. TARJETAS DEL PANEL PRINCIPAL
+======================================== */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px;
+    margin: 20px 0 26px;
+}
+
+.stats article,
+.panel {
+    border: 1px solid #e2eaf2;
+    border-radius: 13px;
+    background: white;
+    box-shadow: 0 5px 20px #173d5e08;
+}
+
+.stats article {
+    padding: 22px;
+}
+
+.stats span {
+    display: block;
+    color: #6b7d90;
+    font-size: 13px;
+}
+
+.stats strong {
+    display: block;
+    margin-top: 12px;
+    color: #176ca5;
+    font-size: 32px;
+}
+
+/* ========================================
+   6. PANELES Y ENCABEZADOS DE SECCIÓN
+======================================== */
+
+.panel {
+    margin-bottom: 22px;
+    padding: 23px;
+}
+
+.panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.panel-head a {
+    color: #1877b9;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/* ========================================
+   7. TABLAS
+======================================== */
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+th,
+td {
+    padding: 13px 12px;
+    border-bottom: 1px solid #e8eef4;
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    background: #f7f9fc;
+    color: #687c91;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+td {
+    color: #334a60;
+}
+
+.empty {
+    padding: 30px;
+    color: #7a8da0;
+    text-align: center;
+}
+
+.pill {
+    padding: 5px 8px;
+    border-radius: 5px;
+    background: #e4f2fc;
+    color: #176ca5;
+    font-weight: 700;
+}
+
+/* ========================================
+   8. FORMULARIOS
+======================================== */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    align-items: end;
+    gap: 16px;
+}
+
+.form-grid label,
+.search label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    color: #50667b;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea,
+.search input {
+    width: 100%;
+    min-width: 0;
+    padding: 11px;
+    border: 1px solid #d2dee9;
+    border-radius: 7px;
+    background: white;
+    color: #203a52;
+    font: inherit;
+}
+
+.form-grid textarea {
+    resize: vertical;
+}
+
+.form-grid input:focus,
+.form-grid select:focus,
+.form-grid textarea:focus,
+.search input:focus {
+    outline: 2px solid #b5def8;
+    border-color: #3993ca;
+}
+
+.narrow {
+    max-width: 650px;
+}
+
+.one {
+    grid-template-columns: 1fr;
+}
+
+/* ========================================
+   9. MENSAJES DEL SISTEMA
+======================================== */
+
+.flash {
+    margin-bottom: 15px;
+    padding: 13px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.ok {
+    border: 1px solid #bce8cc;
+    background: #e0f6e9;
+    color: #17643b;
+}
+
+.error {
+    border: 1px solid #f1c7c3;
+    background: #fff0ef;
+    color: #a52d27;
+}
+
+/* ========================================
+   10. CELDAS DE PARQUEADERO
+======================================== */
+
+.cell-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 14px;
+}
+
+.cell {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 18px;
+    border: 1px solid #dce6ef;
+    border-radius: 10px;
+    background: #f1faf5;
+}
+
+.cell span {
+    color: #6b7c8e;
+    font-size: 12px;
+}
+
+.cell strong {
+    color: #207c4b;
+    font-size: 17px;
+}
+
+.cell small {
+    color: #30465a;
+}
+
+.cell.ocupada {
+    border-color: #f3d7b6;
+    background: #fff4e8;
+}
+
+.cell.ocupada strong {
+    color: #a95b13;
+}
+
+/* ========================================
+   11. BUSCADOR
+======================================== */
+
+.search {
+    display: flex;
+    align-items: end;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.search label {
+    max-width: 320px;
+    flex: 1;
+}
+
+/* ========================================
+   12. MÓDULO DE PAGOS: TARJETAS
+======================================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 18px;
+    margin: 24px 0;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+    padding: 24px;
+    border: 1px solid #dce6f1;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 5px 18px rgba(20, 58, 91, 0.04);
+}
+
+.stat-card span {
+    color: #647b92;
+    font-size: 14px;
+}
+
+.stat-card strong {
+    color: #176eae;
+    font-size: clamp(20px, 2vw, 28px);
+    overflow-wrap: anywhere;
+}
+
+.stat-card small {
+    color: #8192a5;
+    font-size: 12px;
+}
+
+/* ========================================
+   13. MÓDULO DE PAGOS: ESTADOS
+======================================== */
+
+.payment-status {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.payment-status.paid {
+    background: #dcfce7;
+    color: #147647;
+}
+
+.payment-status.pending {
+    background: #fef3c7;
+    color: #925b08;
+}
+
+.payment-status.overdue {
+    background: #fee4e2;
+    color: #b42318;
+}
+
+/* ========================================
+   14. PIE DE PÁGINA
+======================================== */
+
+footer {
+    padding: 22px;
+    color: #8190a1;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* ========================================
+   15. DISEÑO RESPONSIVE
+======================================== */
+
+@media (max-width: 650px) {
+    .head-inner {
+        align-items: flex-start;
+    }
+
+    .welcome {
+        align-items: flex-start;
+    }
+
+    .panel {
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .search {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 18px;
+    }
+}

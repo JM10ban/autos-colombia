@@ -1,0 +1,45 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Autos Colombia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="head-inner">
+            <div class="brand">
+                🚘 Autos Colombia
+                <small>Sistema de gestión de parqueadero</small>
+            </div>
+
+            <nav>
+                <a href="{{ url_for('inicio') }}">Inicio</a>
+                <a href="{{ url_for('usuarios') }}">Usuarios</a>
+                <a href="{{ url_for('vehiculos') }}">Vehículos</a>
+                <a href="{{ url_for('entrada') }}">Entrada</a>
+                <a href="{{ url_for('celdas') }}">Celdas</a>
+                <a href="{{ url_for('historial') }}">Historial</a>
+                <a href="{{ url_for('novedades') }}">Novedades</a>
+                <a href="{{ url_for('pagos') }}">Pagos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        Prototipo académico · Ingeniería de Software · EA1
+    </footer>
+</body>
+</html>

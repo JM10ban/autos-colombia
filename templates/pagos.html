@@ -1,0 +1,150 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-header">
+    <p class="eyebrow">GESTIÓN FINANCIERA</p>
+    <h1>Pagos</h1>
+    <p>Administra las mensualidades y consulta el estado financiero de los usuarios.</p>
+</section>
+
+<section class="stats-grid">
+    <article class="stat-card">
+        <span>Total de pagos</span>
+        <strong>{{ resumen.total }}</strong>
+        <small>Registros realizados</small>
+    </article>
+
+    <article class="stat-card">
+        <span>Recaudado</span>
+        <strong>${{ "{:,.0f}".format(resumen.recaudado) }} COP</strong>
+        <small>Pagos registrados como pagados</small>
+    </article>
+
+    <article class="stat-card">
+        <span>Pendiente</span>
+        <strong>${{ "{:,.0f}".format(resumen.pendiente) }} COP</strong>
+        <small>Pagos por cobrar</small>
+    </article>
+
+    <article class="stat-card">
+        <span>Vencido</span>
+        <strong>${{ "{:,.0f}".format(resumen.vencido) }} COP</strong>
+        <small>Pagos vencidos registrados</small>
+    </article>
+</section>
+
+<section class="panel">
+    <h2>Registrar pago mensual</h2>
+    <p>Completa los datos del usuario y de la mensualidad.</p>
+
+    {% if usuarios %}
+    <form method="POST" action="{{ url_for('pagos') }}">
+        <div class="form-grid">
+            <label for="usuario_id">
+                Usuario *
+                <select id="usuario_id" name="usuario_id" required>
+                    <option value="">Selecciona un usuario</option>
+                    {% for u in usuarios %}
+                    <option value="{{ u.id }}">
+                        {{ u.nombre }} — {{ u.identificacion }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </label>
+
+            <label for="periodo">
+                Periodo mensual *
+                <input id="periodo" type="month" name="periodo" required>
+            </label>
+
+            <label for="valor">
+                Valor en pesos colombianos *
+                <input id="valor" type="number" name="valor"
+                       min="0" step="1" placeholder="Ej. 150000" required>
+            </label>
+
+            <label for="metodo">
+                Método de pago
+                <select id="metodo" name="metodo">
+                    <option value="">Selecciona un método</option>
+                    <option value="Efectivo">Efectivo</option>
+                    <option value="Transferencia">Transferencia</option>
+                    <option value="Tarjeta">Tarjeta</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </label>
+
+            <label for="estado">
+                Estado del pago *
+                <select id="estado" name="estado" required>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="pagado">Pagado</option>
+                    <option value="vencido">Vencido</option>
+                </select>
+            </label>
+
+            <label for="fecha_pago">
+                Fecha de pago
+                <input id="fecha_pago" type="date" name="fecha_pago">
+            </label>
+        </div>
+
+        <button class="btn" type="submit">Guardar pago</button>
+    </form>
+    {% else %}
+    <p class="empty">
+        Primero debes registrar un usuario en el módulo Usuarios.
+    </p>
+    {% endif %}
+</section>
+
+<section class="panel">
+    <h2>Historial de pagos</h2>
+    <p>Consulta los pagos registrados en el sistema.</p>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Periodo</th>
+                    <th>Valor</th>
+                    <th>Método</th>
+                    <th>Fecha de pago</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in pagos %}
+                <tr>
+                    <td>
+                        <strong>{{ p.nombre }}</strong><br>
+                        <small>{{ p.identificacion }}</small>
+                    </td>
+                    <td>{{ p.periodo }}</td>
+                    <td>${{ "{:,.0f}".format(p.valor) }} COP</td>
+                    <td>{{ p.metodo or "No especificado" }}</td>
+                    <td>{{ p.fecha_pago or "Sin registrar" }}</td>
+                    <td>
+                        {% if p.estado == "pagado" %}
+                        <span class="payment-status paid">Pagado</span>
+                        {% elif p.estado == "vencido" %}
+                        <span class="payment-status overdue">Vencido</span>
+                        {% else %}
+                        <span class="payment-status pending">Pendiente</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" class="empty">
+                        Todavía no hay pagos registrados.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

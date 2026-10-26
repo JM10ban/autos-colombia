@@ -1,0 +1,83 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-header">
+    <p class="eyebrow">CONTROL DEL PARQUEADERO</p>
+    <h1>Novedades e incidentes</h1>
+    <p>Registra y consulta incidentes relacionados con los vehículos del parqueadero.</p>
+</section>
+
+<section class="panel">
+    <h2>Registrar una novedad</h2>
+
+    <form method="POST" action="{{ url_for('novedades') }}">
+        <div class="form-grid">
+            <label for="estancia_id">
+                Vehículo y movimiento
+                <select id="estancia_id" name="estancia_id" required>
+                    <option value="">Selecciona un movimiento</option>
+                    {% for m in movimientos %}
+                    <option value="{{ m.id }}">
+                        {{ m.placa }} — {{ m.nombre }} — Entrada: {{ m.entrada }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </label>
+
+            <label for="descripcion">
+                Descripción del incidente
+                <textarea
+                    id="descripcion"
+                    name="descripcion"
+                    rows="4"
+                    placeholder="Describe el daño, incidente u observación..."
+                    required
+                ></textarea>
+            </label>
+        </div>
+
+        <button class="btn" type="submit">Guardar novedad</button>
+    </form>
+
+    {% if not movimientos %}
+    <p class="empty">
+        No hay movimientos registrados. Primero registra la entrada de un vehículo.
+    </p>
+    {% endif %}
+</section>
+
+<section class="panel">
+    <h2>Historial de novedades</h2>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Placa</th>
+                    <th>Usuario</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for n in novedades %}
+                <tr>
+                    <td>{{ n.fecha }}</td>
+                    <td><strong>{{ n.placa }}</strong></td>
+                    <td>{{ n.nombre }}</td>
+                    <td>{{ n.descripcion }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="empty">
+                        Todavía no hay novedades registradas.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
